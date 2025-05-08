@@ -209,4 +209,38 @@ What is type inference in TypeScript? Why is it helpful?
 
 How does TypeScript help in improving code quality and project maintainability?
 
-Provide an example of using union and intersection types in TypeScript.
+# Provide an example of using union and intersection types in TypeScript.
+
+example if union type:
+
+```ts
+type Id = string | number;
+
+const userId1: Id = '1234ewd';
+const userId2: Id = 1234;
+```
+
+example of intersection type in typescript:
+
+```ts
+type Id = string | number;
+
+type User = {
+  name: string;
+  age: number;
+};
+
+type Employee = {
+  jobTitle: string;
+  employeeId: Id;
+};
+
+type EmployeePerson = User & Employee;
+
+const worker: EmployeePerson = {
+  name: 'John',
+  age: 25,
+  jobTitle: 'dev',
+  employeeId: 'dad2343rdew',
+};
+```
