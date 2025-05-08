@@ -121,7 +121,60 @@ const name = getPropertyVal(person, 'name');
 console.log(name); // John
 ```
 
-Explain the difference between any, unknown, and never types in TypeScript.
+# Explain the difference between any, unknown, and never types in TypeScript.
+
+### any
+
+any means anything goes it basically tells typescript to turn off type checking. it offers maximum flexibility but if not handled correctly it can lead to runtime errors. it is mostly used to when migrating typescript code to javascript code or with third party libraries without type declaration.
+
+```ts
+let myVariable: any;
+
+myVariable = 'John';
+myVariable = 25;
+myVariable = {
+  name: 'John',
+  address: 'Dhaka',
+};
+myVariable = 'Dhaka';
+
+console.log(myVariable.name); // undefined
+```
+
+### unknown
+
+unknown means currently I don't know about the data type but in future while working I have to type narrow in order to handle the data properly. it is a safer alternatives to any preventing unexpected runtime errors.
+
+example:
+
+```ts
+let myVariable: unknown;
+
+myVariable = 'John';
+myVariable = 25;
+myVariable = 'Dhaka';
+myVariable = {
+  name: 'John',
+  address: 'Dhaka',
+};
+
+console.log(myVariable.name); // error: myVariable data type is unknown.
+
+// correct way
+console.log((myVariable as { name: string; address: string }).name);
+```
+
+### never
+
+never the name it self is self explanatory. never means we are not going to return anything normally. this type represent values that will never occur, like when a function is going to throw an error or worst case an infinite loop.
+
+example:
+
+```ts
+function throwError(message: string): never {
+  throw new Error(message);
+}
+```
 
 What is the use of enums in TypeScript? Provide an example of a numeric and string enum.
 
