@@ -176,7 +176,34 @@ function throwError(message: string): never {
 }
 ```
 
-What is the use of enums in TypeScript? Provide an example of a numeric and string enum.
+# What is the use of enums in TypeScript? Provide an example of a numeric and string enum.
+
+## enum full form is enumerations, this is a feature of typescript that allows developer to write a set of name constrains.
+
+like the example down below:
+
+```ts
+enum Day {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+}
+
+// use case
+function getDayType(day: Day): string {
+  if (day === Day.Sunday || day === Day.Saturday) {
+    return 'Weekend';
+  } else {
+    return 'Weekday';
+  }
+}
+
+console.log(getDayType(Day.Monday)); // Weekday
+```
 
 What is type inference in TypeScript? Why is it helpful?
 
